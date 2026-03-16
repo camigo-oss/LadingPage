@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Agencia de viajes Viajes Estelares: destinos turísticos nacionales e internacionales, paquetes vacacionales, lunas de miel y aventuras. Reserva ahora y descubre el mundo con los mejores precios y atención personalizada.">
+    <meta name="keywords"
+        content="agencia de viajes, destinos turísticos, paquetes vacacionales, viajes a playa, viajes a montaña, viajes a ciudades, aventuras, reservas de viajes, ofertas especiales">
+    <title>Viajes Estelares - Agencia de Viajes | Destinos y Paquetes Turísticos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FFFFFF;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Colores */
+        :root {
+            --primary-blue: #007BFF;
+            --turquoise: #40E0D0;
+            --sand: #C2B280;
+            --white: #FFFFFF;
+            --text-dark: #333;
+            --accent-red: #FF6347;
+            /* Para favoritos y ofertas */
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--turquoise);
+        }
+
+        /* Menú hamburguesa para mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('https://via.placeholder.com/1920x800?text=Descubre+el+Mundo');
+            /* Imagen hero genérica */
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--turquoise);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--sand);
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+        }
+
+        /* Buscador y Filtros */
+        .search-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .search-filters input,
+        .search-filters select {
+            padding: 0.8rem;
+            border: 1px solid var(--primary-blue);
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 200px;
+        }
+
+        /* Destinos destacados */
+        .destinos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .card.hidden {
+            display: none;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+        }
+
+        .card .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Botón de favoritos */
+        .favorite-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .favorite-btn.favorited {
+            color: var(--accent-red);
+        }
+
+        /* Sección Favoritos */
+        #favoritos .destinos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Paquetes turísticos */
+        .paquetes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Promociones */
+        .promociones {
+            background-color: #f8f8f8;
+        }
+
+        .promo-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .promo-card h3 {
+            color: var(--accent-red);
+        }
+
+        /* Por qué elegirnos */
+        .elegirnos {
+            background-color: #f8f8f8;
+        }
+
+        .elegirnos ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .elegirnos li {
+            font-size: 1.2rem;
+            padding: 1rem;
+            border: 1px solid var(--turquoise);
+            border-radius: 5px;
+        }
+
+        /* Testimonios */
+        .testimonios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+        }
+
+        /* Formularios */
+        form {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input,
+        textarea,
+        button,
+        select {
+            padding: 1rem;
+            border: 1px solid var(--primary-blue);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--turquoise);
+            color: var(--white);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--sand);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        /* Animaciones */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.7s ease-out;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 123, 255, 0.18);
+        }
+
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .cta-button:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.4);
+        }
+
+        h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--primary-blue));
+            border-radius: 2px;
+            transition: width 0.8s ease;
+        }
+
+        h2.visible::after {
+            width: 120px;
+        }
+
+        .testimonial {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.9s ease-out;
+        }
+
+        .testimonial.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hero {
+            opacity: 0;
+            animation: heroFade 1.2s forwards 0.3s;
+        }
+
+        @keyframes heroFade {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-blue);
+                padding: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .search-filters {
+                flex-direction: column;
+            }
+
+            .search-filters input,
+            .search-filters select {
+                width: 100%;
+            }
+        }
+
+        /* Retrasos escalonados */
+        .card:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .card:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .card:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .card:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .card:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        .card:nth-child(6) {
+            transition-delay: 0.6s;
+        }
+
+        .card:nth-child(7) {
+            transition-delay: 0.7s;
+        }
+
+        .card:nth-child(8) {
+            transition-delay: 0.8s;
+        }
+
+        .testimonial:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .testimonial:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .testimonial:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        .testimonial:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Viajes Estelares</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#destinos">Destinos</a></li>
+                <li><a href="#paquetes">Paquetes</a></li>
+                <li><a href="#promociones">Promociones</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#favoritos">Favoritos</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero fade-in">
+        <h1>Descubre el Mundo con Viajes Estelares</h1>
+        <p>Tu agencia de viajes confiable para experiencias inolvidables. Encuentra los mejores paquetes turísticos,
+            ofertas exclusivas y destinos soñados. ¡Reserva hoy y vive la aventura de tu vida!</p>
+        <a href="#destinos" class="cta-button">Explorar Destinos</a>
+    </section>
+
+    <!-- Destinos Destacados -->
+    <section id="destinos">
+        <h2 class="fade-in">Destinos Destacados</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Explora nuestros destinos turísticos populares: playas
+            paradisíacas, montañas impresionantes, ciudades vibrantes y aventuras emocionantes. Encuentra el viaje
+            perfecto para ti.</p>
+        <!-- Buscador y Filtros -->
+        <div class="search-filters">
+            <input type="text" id="search-input" placeholder="Buscar por nombre...">
+            <select id="type-filter">
+                <option value="">Tipo de viaje</option>
+                <option value="playa">Playa</option>
+                <option value="montana">Montaña</option>
+                <option value="ciudad">Ciudad</option>
+                <option value="aventura">Aventura</option>
+            </select>
+            <select id="price-filter">
+                <option value="">Precio máximo</option>
+                <option value="1000">$1000</option>
+                <option value="2000">$2000</option>
+                <option value="3000">$3000</option>
+            </select>
+            <select id="duration-filter">
+                <option value="">Duración</option>
+                <option value="5">Hasta 5 días</option>
+                <option value="10">Hasta 10 días</option>
+                <option value="15">Más de 10 días</option>
+            </select>
+            <button onclick="filterDestinos()">Aplicar Filtros</button>
+        </div>
+        <div class="destinos">
+            <!-- Tarjeta Playa: Cancún -->
+            <div class="card fade-in" data-type="playa" data-price="1200" data-duration="7" data-name="Cancún">
+                <img src="https://www.livedreamdiscover.com/wp-content/uploads/2018/11/Cancun-5.jpg"
+                    alt="Playa de Cancún, México - Arena blanca y aguas turquesas">
+                <button class="favorite-btn" onclick="toggleFavorite(this, 'cancun')">❤️</button>
+                <div class="card-content">
+                    <h3>Cancún, México</h3>
+                    <p>Sumérgete en las cristalinas aguas del Caribe, relájate en playas de arena blanca y explora
+                        ruinas mayas antiguas. Ideal para vacaciones familiares o románticas, con resorts todo incluido
+                        y vida nocturna vibrante.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <!-- Tarjeta Playa: Bali -->
+            <div class="card fade-in" data-type="playa" data-price="1500" data-duration="10" data-name="Bali">
+                <img src="https://static.hectindia.com/0000/6/2024/03/27/bali-indonesia-hect-1.webp"
+                    alt="Atardecer en Bali, Indonesia - Templos y océano">
+                <button class="favorite-btn" onclick="toggleFavorite(this, 'bali')">❤️</button>
+                <div class="card-content">
+                    <h3>Bali, Indonesia</h3>
+                    <p>Descubre un paraíso tropical con playas exóticas, templos milenarios y arrozales verdes. Perfecto
+                        para lunas de miel, yoga y surf. Vive la cultura balinesa con spas de lujo y cocina auténtica.
+                    </p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <!-- Tarjeta Playa: Maldivas -->
+            <div class="card fade-in" data-type="playa" data-price="2500" data-duration="7" data-name="Maldivas">
+                <img src="https://images.squarespace-cdn.com/content/v1/5b4f0c8d89c17294e53d4ffc/1601713728638-FF1S7ZURZJCGA6MGI603/_GPX0011.jpg"
+                    alt="Playa en Maldivas - Arena blanca y palmeras">
+                <button class="favorite-btn" onclick="toggleFavorite(this, 'maldivas')">❤️</button>
+                <div class="card-content">
+                    <h3>Maldivas</h3>
+                    <p>Escapa al lujo absoluto en atolones de ensueño con bungalows sobre el agua, snorkel en arrecifes
+                        de coral y atardeceres inolvidables. Ideal para relajación total y escapadas románticas.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <!-- Tarjeta Montaña: Alpes Suizos -->
+            <div class="card fade-in" data-type="montana" data-price="1800" data-duration="8" data-name="Alpes Suizos">
+                <img src="https://englishpluspodcast.com/wp-content/uploads/2023/11/The-Stunning-Beauty-of-the-Swiss-Alps-jpg.webp"
+                    alt="Alpes Suizos - Montañas nevadas">
+                <button class="favorite-btn" onclick="toggleFavorite(this, 'alpes')">❤️</button>
+                <div class="card-content">
+                    <h3>Alpes Suizos, Suiza</h3>
+                    <p>Conquista picos nevados, esquía en estaciones de clase mundial y disfruta de vistas panorámicas
+                        en trenes escénicos. Perfecto para amantes de la naturaleza y deportes de invierno.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <!-- Tarjeta Montaña: Patagonia -->
+            <div class="card fade-in" data-type="montana" data-price="2200" data-duration="12" data-name="Patagonia">
+                <img src="https://res.cloudinary.com/activeadventures/image/upload/c_limit,w_3840/dpr_auto/f_auto/q_auto/v1/gqtbintognewezphnyil?_a=BAVMn6AQ0"
+                    alt="Hiking en Patagonia - Montañas y lago">
+                <button class="favorite-btn" onclick="toggleFavorite(this, 'patagonia')">❤️</button>
+                <div class="card-content">
+                    <h3>Patagonia, Argentina/Chile</h3>
+                    <p>Explora glaciares imponentes, treka en senderos épicos y observa fauna única. Una aventura para
+                        almas intrépidas que buscan desconexión en paisajes salvajes.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <!-- Tarjeta Ciudad: Nueva York -->
+            <div class="card fade-in" data-type="ciudad" data-price="1400" data-duration="5" data-name="Nueva York">
+                <img src="https://cdn3.tropicalsky.co.uk/images/800x600/empire-state-building-new-york.jpg"
+                    alt="Skyline de Nueva York - Empire State">
+                <button class="favorite-btn" onclick="toggleFavorite(this, 'newyork')">❤️</button>
+                <div class="card-content">
+                    <h3>Nueva York, EE.UU.</h3>
+                    <p>Vive el pulso de la Gran Manzana: rascacielos icónicos, Broadway, Central Park y gastronomía
+                        diversa. Ideal para viajes culturales y shopping de lujo.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <!-- Tarjeta Ciudad: Roma -->
+            <div class="card fade-in" data-type="ciudad" data-price="1300" data-duration="6" data-name="Roma">
+                <img src="https://cdn.britannica.com/36/162636-050-932C5D49/Colosseum-Rome-Italy.jpg"
+                    alt="Coliseo en Roma, Italia">
+                <button class="favorite-btn" onclick="toggleFavorite(this, 'roma')">❤️</button>
+                <div class="card-content">
+                    <h3>Roma, Italia</h3>
+                    <p>Camina por la historia eterna: Coliseo, Vaticano y Fontana di Trevi. Degusta pasta auténtica y
+                        gelato en una ciudad que combina antigüedad con modernidad.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <!-- Tarjeta Aventura: Safari África -->
+            <div class="card fade-in" data-type="aventura" data-price="2800" data-duration="10"
+                data-name="Safari África">
+                <img src="https://www.benciaafricaadventure.com/wp-content/uploads/2025/06/Masai-Mara-Big-Five-Safaris.jpg"
+                    alt="Safari en África - Elefantes en la sabana">
+                <button class="favorite-btn" onclick="toggleFavorite(this, 'safari')">❤️</button>
+                <div class="card-content">
+                    <h3>Safari en África (Kenia/Tanzania)</h3>
+                    <p>Observa los Big Five en su hábitat natural, acampa bajo estrellas africanas y vive la migración
+                        de ñus. Una experiencia transformadora para amantes de la wildlife.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paquetes Turísticos -->
+    <section id="paquetes" style="background-color: #f8f8f8;">
+        <h2 class="fade-in">Paquetes Turísticos</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Nuestros paquetes vacacionales incluyen todo lo necesario
+            para un viaje sin preocupaciones. Elige entre opciones económicas y premium, con vuelos, hoteles y
+            actividades incluidas.</p>
+        <div class="paquetes">
+            <div class="card fade-in">
+                <img src="https://via.placeholder.com/300x200?text=Paquete+Playa" alt="Paquete Playa Relax">
+                <div class="card-content">
+                    <h3>Paquete Playa Relax</h3>
+                    <p>Duración: 7 días | Precio: $1200 por persona | Incluye: Vuelos ida/vuelta, hotel 4 estrellas todo
+                        incluido, traslados, excursión a ruinas mayas y seguro de viaje.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <div class="card fade-in">
+                <img src="https://via.placeholder.com/300x200?text=Paquete+Montana" alt="Paquete Montaña Aventura">
+                <div class="card-content">
+                    <h3>Paquete Montaña Aventura</h3>
+                    <p>Duración: 8 días | Precio: $1800 por persona | Incluye: Vuelos, alojamiento en cabañas, equipo de
+                        esquí, guías expertos, comidas y seguro contra accidentes.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <div class="card fade-in">
+                <img src="https://via.placeholder.com/300x200?text=Paquete+Ciudad" alt="Paquete Ciudad Cultural">
+                <div class="card-content">
+                    <h3>Paquete Ciudad Cultural</h3>
+                    <p>Duración: 5 días | Precio: $1400 por persona | Incluye: Vuelos, hotel céntrico, tours guiados a
+                        monumentos, entradas a museos y transporte público ilimitado.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+            <div class="card fade-in">
+                <img src="https://via.placeholder.com/300x200?text=Paquete+Aventura" alt="Paquete Aventura Extrema">
+                <div class="card-content">
+                    <h3>Paquete Aventura Extrema</h3>
+                    <p>Duración: 10 días | Precio: $2800 por persona | Incluye: Vuelos, alojamiento en lodges, safaris
+                        diarios, equipo fotográfico, guías locales y seguro médico.</p>
+                    <a href="#reservas" class="cta-button">Reservar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promociones u Ofertas Especiales -->
+    <section id="promociones" class="promociones">
+        <h2 class="fade-in">Ofertas Especiales</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">¡Aprovecha nuestras promociones limitadas! Descuentos
+            exclusivos en paquetes turísticos para reservas inmediatas. No te pierdas estas oportunidades para viajar al
+            mejor precio.</p>
+        <div class="destinos"> <!-- Reusamos grid de destinos -->
+            <div class="promo-card fade-in">
+                <h3>Descuento 20% en Playa</h3>
+                <p>Para reservas en Cancún o Maldivas antes del 30/06/2026. Incluye upgrade a suite.</p>
+                <a href="#reservas" class="cta-button">Aprovechar</a>
+            </div>
+            <div class="promo-card fade-in">
+                <h3>Paquete Familiar Gratis Niños</h3>
+                <p>En viajes a Nueva York o Roma, niños menores de 12 viajan gratis. Válido hasta 15/07/2026.</p>
+                <a href="#reservas" class="cta-button">Aprovechar</a>
+            </div>
+            <div class="promo-card fade-in">
+                <h3>Oferta Aventura 15% Off</h3>
+                <p>En safaris africanos o trekking en Patagonia. Incluye equipo adicional gratis.</p>
+                <a href="#reservas" class="cta-button">Aprovechar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por Qué Viajar con Nosotros -->
+    <section id="nosotros" class="elegirnos">
+        <h2 class="fade-in">Por Qué Viajar con Nosotros</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">En Viajes Estelares, nos comprometemos a ofrecerte la mejor
+            experiencia de viaje. Descubre por qué miles de clientes nos eligen año tras año.</p>
+        <ul class="fade-in">
+            <li>Atención personalizada: Asesores expertos adaptan tu viaje a tus necesidades y presupuesto.</li>
+            <li>Mejores precios garantizados: Comparamos ofertas para darte el valor más alto por tu dinero.</li>
+            <li>Guías locales expertos: Conocimiento profundo de cada destino para experiencias auténticas.</li>
+            <li>Seguridad y flexibilidad: Seguros completos y políticas de cancelación flexibles.</li>
+            <li>Sostenibilidad: Viajes responsables que apoyan comunidades locales y preservan el medio ambiente.</li>
+        </ul>
+    </section>
+
+    <!-- Testimonios de Clientes -->
+    <section id="testimonios">
+        <h2 class="fade-in">Testimonios de Clientes</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Escucha lo que dicen nuestros viajeros satisfechos. Tus
+            experiencias son nuestra mejor publicidad.</p>
+        <div class="testimonios">
+            <div class="testimonial fade-in">
+                <p>"¡El viaje a Cancún fue mágico! Todo organizado a la perfección, playas increíbles y servicio
+                    impecable."</p>
+                <cite>- Ana López, Familia de 4</cite>
+            </div>
+            <div class="testimonial fade-in">
+                <p>"Aventura en los Alpes inolvidable. Guías expertos y paisajes de ensueño. Recomiendo Viajes Estelares
+                    al 100%."</p>
+                <cite>- Juan Pérez, Grupo de Amigos</cite>
+            </div>
+            <div class="testimonial fade-in">
+                <p>"Luna de miel en Bali perfecta. Atención romántica y detalles que marcaron la diferencia."</p>
+                <cite>- María y Carlos, Pareja</cite>
+            </div>
+            <div class="testimonial fade-in">
+                <p>"Safari en África superó expectativas. Vimos leones de cerca y el equipo fue profesional."</p>
+                <cite>- Roberto Gómez, Viajero Solo</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Reserva -->
+    <section id="reservas" style="background-color: #f8f8f8;">
+        <h2 class="fade-in">Formulario de Reserva</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">
+            Reserva tu viaje soñado de forma rápida y segura.
+        </p>
+
+        <form id="reserva-form" method="POST" action="procesar_reserva.php">
+
+            <!-- Usuario (si el usuario está logueado lo ideal es enviarlo oculto) -->
+            <input type="hidden" name="usuario_id" value="1">
+
+            <!-- Paquete -->
+            <select name="paquete_id" required>
+                <option value="">Selecciona un destino</option>
+                <option value="1">Cancún</option>
+                <option value="2">Bali</option>
+                <option value="3">Maldivas</option>
+                <option value="4">Alpes Suizos</option>
+                <option value="5">Patagonia</option>
+                <option value="6">Nueva York</option>
+                <option value="7">Roma</option>
+                <option value="8">Safari África</option>
+            </select>
+
+            <!-- Fecha del viaje -->
+            <input type="date" name="fecha_viaje" required>
+
+            <!-- Número de personas -->
+            <label for="">Numero Personas</label>
+            <input type="number" name="numero_personas" min="1" value="1" required>
+
+            <!-- Precio total -->
+            <input type="number" name="precio_total" step="0.01" placeholder="Precio total" required>
+
+            <!-- Estado (opcional, puedes ocultarlo si siempre será pendiente) -->
+            <select name="estado">
+                <option value="pendiente" selected>Pendiente</option>
+                <option value="confirmada">Confirmada</option>
+                <option value="cancelada">Cancelada</option>
+                <option value="completada">Completada</option>
+            </select>
+
+            <!-- Notas -->
+            <textarea name="notas" placeholder="Notas adicionales (opcional)"></textarea>
+
+            <button id="botonReservar" type="submit">Reservar</button>
+        </form>
+    </section>
+
+    <!-- Formulario de Contacto -->
+    <section id="contacto">
+        <h2 class="fade-in">Formulario de Contacto</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">¿Preguntas? Envíanos un mensaje y te responderemos en menos
+            de 24 horas.</p>
+        <form id="contacto-form">
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mensaje" rows="5" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Sección Favoritos -->
+    <section id="favoritos" style="background-color: #f8f8f8;">
+        <h2 class="fade-in">Tus Destinos Favoritos</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Guarda tus destinos preferidos y revísalos cuando quieras.
+            ¡Planea tu próximo viaje!</p>
+        <div class="destinos" id="favoritos-list">
+            <!-- Se llenará con JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>Contacto: info@viajesestelares.com | Tel: +123 456 789</p>
+        <p>&copy; 2026 Viajes Estelares. Todos los derechos reservados. Agencia de viajes líder en destinos turísticos y
+            paquetes vacacionales.</p>
+    </footer>
+
+    <script>
+        const reserva_form = document.getElementById('reserva-form');
+        reserva_form.addEventListener('submit', (e) => {
+
+            //Modificar
+            fetch('/api/reservas.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    usuario_id: 1,
+                    paquete_id: 2,
+                    fecha_viaje: '2026-03-15',
+                    numero_personas: 2,
+                    precio_total: 1200
+                })
+            });
+
+        });
+
+
+        fetch('/api/reservas.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                usuario_id: 1,
+                paquete_id: 2,
+                fecha_viaje: '2026-03-15',
+                numero_personas: 2,
+                precio_total: 1200
+            })
+        });
+
+        // Menú hamburguesa
+        function toggleMenu() {
+            document.querySelector('nav ul').classList.toggle('active');
+        }
+
+        // Observador para animaciones
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: "0px 0px -80px 0px" });
+
+        document.querySelectorAll('.fade-in, .card, .testimonial, h2').forEach(el => observer.observe(el));
+
+        // Filtros y Buscador de Destinos
+        function filterDestinos() {
+            const search = document.getElementById('search-input').value.toLowerCase();
+            const type = document.getElementById('type-filter').value;
+            const price = document.getElementById('price-filter').value;
+            const duration = document.getElementById('duration-filter').value;
+
+            document.querySelectorAll('.destinos .card').forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const cardType = card.dataset.type;
+                const cardPrice = parseInt(card.dataset.price);
+                const cardDuration = parseInt(card.dataset.duration);
+
+                let show = true;
+
+                if (search && !name.includes(search)) show = false;
+                if (type && type !== cardType) show = false;
+                if (price && cardPrice > parseInt(price)) show = false;
+                if (duration && cardDuration > parseInt(duration)) show = false;
+
+                card.classList.toggle('hidden', !show);
+            });
+        }
+
+        // Favoritos con localStorage
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        function toggleFavorite(btn, id) {
+            const index = favorites.indexOf(id);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                btn.classList.remove('favorited');
+            } else {
+                favorites.push(id);
+                btn.classList.add('favorited');
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            loadFavorites();
+        }
+
+        // Cargar favoritos iniciales en botones
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            const id = btn.parentElement.dataset.name.toLowerCase().replace(/\s/g, '');
+            if (favorites.includes(id)) btn.classList.add('favorited');
+        });
+
+        // Cargar sección favoritos
+        function loadFavorites() {
+            const list = document.getElementById('favoritos-list');
+            list.innerHTML = '';
+            favorites.forEach(id => {
+                const originalCard = document.querySelector(`.card[data-name="${id.charAt(0).toUpperCase() + id.slice(1)}"]`);
+                if (originalCard) {
+                    const clone = originalCard.cloneNode(true);
+                    clone.querySelector('.favorite-btn').onclick = () => toggleFavorite(clone.querySelector('.favorite-btn'), id);
+                    list.appendChild(clone);
+                }
+            });
+        }
+        loadFavorites();
+
+        // Formularios (simulación de envío)
+        document.getElementById('reserva-form').addEventListener('submit', e => {
+            e.preventDefault();
+            alert('¡Reserva enviada! Te contactaremos pronto para confirmar detalles.');
+        });
+
+        document.getElementById('contacto-form').addEventListener('submit', e => {
+            e.preventDefault();
+            alert('¡Mensaje enviado! Responderemos en breve.');
+        });
+    </script>
+
+</body>
+
+</html>
