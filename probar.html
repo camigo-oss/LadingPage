@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yacht - Luxury Charter Experience</title>
+    <title>Viajes Estelares - Agencia de Viajes | Destinos y Paquetes Turísticos</title>
     <meta name="description" content="Private luxury yacht charters across the world's most coveted waters.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,21 @@
 </head>
 
 <body>
-    <!-- Navbar -->
+
+    <!-- Navbar (Header) -->
     <nav id="navbar" class="navbar">
         <div class="navbar-container">
             <div class="navbar-spacer"></div>
             <div class="navbar-links">
-                <a href="#fleet" class="nav-link">Collection</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#destinations" class="nav-link">Destinations</a>
-                <a href="#charter" class="nav-link">Inquire</a>
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#destinos" class="nav-link">Destinos</a>
+                <a href="#paquetes" class="nav-link">Paquetes</a>
+                <a href="#promociones" class="nav-link">Promociones</a>
+                <a href="#nosotros" class="nav-link">Nosotros</a>
+                <a href="#testimonios" class="nav-link">Testimonios</a>
+                <a href="#reservas" class="nav-link">Reservas</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+                <a href="#favoritos" class="nav-link">Favoritos</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Open menu">
                 <span class="hamburger-line hamburger-line-1"></span>
@@ -34,10 +40,15 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-content">
-            <a href="#fleet" class="mobile-link">Collection</a>
-            <a href="#experience" class="mobile-link">Experience</a>
-            <a href="#destinations" class="mobile-link">Destinations</a>
-            <a href="#charter" class="mobile-link">Inquire</a>
+            <a href="#inicio" class="nav-link">Inicio</a>
+            <a href="#destinos" class="nav-link">Destinos</a>
+            <a href="#paquetes" class="nav-link">Paquetes</a>
+            <a href="#promociones" class="nav-link">Promociones</a>
+            <a href="#nosotros" class="nav-link">Nosotros</a>
+            <a href="#testimonios" class="nav-link">Testimonios</a>
+            <a href="#reservas" class="nav-link">Reservas</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+            <a href="#favoritos" class="nav-link">Favoritos</a>
             <div class="mobile-menu-divider"></div>
         </div>
     </div>
@@ -58,12 +69,14 @@
 
                 <!-- Text overlays -->
                 <div class="hero-overlay hero-overlay-1" id="hero-overlay-1">
-                    <p class="hero-sub">Where the ocean becomes yours</p>
+                    <p class="hero-sub">Buscando lo mejor para ti</p>
                 </div>
                 <div class="hero-overlay hero-overlay-2" id="hero-overlay-2">
-                    <h1 class="hero-title">Boundless</h1>
-                    <p class="hero-sub">Charter the extraordinary</p>
-                    <a href="#charter" class="hero-cta">Explore</a>
+                    <h1 class="hero-title">Descubre Viajes Estelares</h1>
+                    <p class="hero-sub">Tu agencia de viajes confiable para experiencias inolvidables. Encuentra los
+                        mejores paquetes turísticos,
+                        ofertas exclusivas y destinos soñados. ¡Reserva hoy y vive la aventura de tu vida!</p>
+                    <a href="#destinos" class="hero-cta">Explorar Destinos</a>
                 </div>
 
                 <!-- Scroll indicator -->
@@ -78,47 +91,290 @@
         <section class="brand-statement">
             <div class="brand-top-gradient"></div>
             <div class="brand-container">
-                <!-- Cinematic image with text -->
-                <div class="brand-image-wrapper" data-animate>
-                    <div class="brand-image-container">
-                        <img src="images\yacht-interior.jpg" alt="Luxury yacht interior salon" class="brand-image">
+                <!-- Destinos destacados-->
+                <section id="destinos">
+                    <h2>Explora nuestros destinos turísticos </h2>
+                    <div class="search-filters">
+                        <input type="text" id="search-input" placeholder="Buscar por nombre...">
+                        <select id="type-filter">
+                            <option value="">Tipo de viaje</option>
+                            <option value="playa">Playa</option>
+                            <option value="montana">Montaña</option>
+                            <option value="ciudad">Ciudad</option>
+                            <option value="aventura">Aventura</option>
+                        </select>
+                        <select id="price-filter">
+                            <option value="">Precio máximo</option>
+                            <option value="1000">$1000</option>
+                            <option value="2000">$2000</option>
+                            <option value="3000">$3000</option>
+                        </select>
+                        <select id="duration-filter">
+                            <option value="">Duración</option>
+                            <option value="5">Hasta 5 días</option>
+                            <option value="10">Hasta 10 días</option>
+                            <option value="15">Más de 10 días</option>
+                        </select>
+                        <button onclick="filterDestinos()">Aplicar Filtros</button>
                     </div>
-                    <div class="brand-image-overlay"></div>
-                    <div class="brand-image-overlay-side"></div>
-                    <div class="brand-image-content">
-                        <span class="brand-label" data-animate>The Philosophy</span>
-                        <h2 class="brand-heading">
-                            <span class="reveal-text" data-animate>Not just a yacht.</span>
-                            <br>
-                            <span class="reveal-text reveal-text-dim" data-animate>A private world at sea.</span>
-                        </h2>
-                    </div>
-                </div>
+                    <!-- Tarjeta Playa Cacún -->
+                    <div class="brand-image-wrapper" data-animate>
 
-                <!-- Two columns -->
-                <div class="brand-columns">
+                        <div class="brand-image-container">
+                            <img src="images/cancun.jpg" alt="Playa de Cancún, México - Arena blanca y aguas turquesas">
+                        </div>
+                        <div class="brand-image-overlay"></div>
+                        <div class="brand-image-overlay-side"></div>
+                        <div class="brand-image-content">
+                            <span class="brand-label" data-animate>Destinos Destacados</span>
+                            <h2 class="brand-heading">
+                                <span class="reveal-text" data-animate>Cancun, México</span>
+                                <br>
+                            </h2>
+                            <a href="#reservas" class="cta-button">Reservar</a>
+                        </div>
+                    </div>
+
+
+
                     <div class="brand-text">
-                        <p data-animate>Born from a single obsession -- that luxury on the water should feel effortless,
-                            boundless, and entirely yours. Every journey begins the moment you step aboard.</p>
-                        <p data-animate>From the Mediterranean to the Maldives, we don't follow routes. We follow
-                            horizons.</p>
+                        <p data-animate>Sumérgete en las cristalinas aguas del Caribe, relájate en playas de arena
+                            blanca y explora ruinas mayas
+                            antiguas.</p>
+                        <p data-animate>Ideal para vacaciones familiares o románticas, con resorts todo incluido y
+                            vida nocturna vibrante.</p>
                     </div>
-                    <div class="brand-stats" data-animate>
-                        <div class="stat">
-                            <span class="stat-value" data-count="42" data-suffix="m">0m</span>
-                            <span class="stat-label">Length</span>
+
+                    <br>
+                    <!-- Tarjeta Playa: Bali -->
+                    <div class="brand-image-wrapper" data-animate>
+                        <div class="brand-image-container">
+                            <img src="https://media.cntravellerme.com/photos/68870cae16b3b95603955912/16:9/w_2560%2Cc_limit/072425-Unwritten-Rules-Bali-GettyImages-1469116195.jpg"
+                                alt="Atardecer en Bali, Indonesia - Templos y océano">
                         </div>
-                        <div class="stat">
-                            <span class="stat-value" data-count="12" data-suffix="">0</span>
-                            <span class="stat-label">Guests</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value" data-count="8" data-suffix="">0</span>
-                            <span class="stat-label">Crew</span>
+                        <div class="brand-image-overlay"></div>
+                        <div class="brand-image-overlay-side"></div>
+                        <div class="brand-image-content">
+                            <span class="brand-label" data-animate>Destinos Destacados</span>
+                            <h2 class="brand-heading">
+                                <span class="reveal-text" data-animate>Bali, Indonesia</span>
+                                <br>
+                            </h2>
+                            <a href="#reservas" class="cta-button">Reservar</a>
+
                         </div>
                     </div>
-                </div>
+
+                    <div class="brand-text">
+                        <p data-animate>Descubre un paraíso tropical con playas exóticas, templos milenarios y arrozales
+                            verdes.</p>
+                        <p data-animate> Perfecto para lunas de miel, yoga y surf. Vive la cultura balinesa con spas de
+                            lujo
+                            y cocina auténtica.
+                        </p>
+                    </div>
+                    <br>
+
+                    <!-- Tarjeta Maldivas-->
+                    <section>
+                        <div class="brand-image-wrapper" data-animate>
+                            <div class="brand-image-container">
+                                <img src="https://images.squarespace-cdn.com/content/v1/5b4f0c8d89c17294e53d4ffc/1601713728638-FF1S7ZURZJCGA6MGI603/_GPX0011.jpg"
+                                    alt="Playa en Maldivas - Arena blanca y palmeras">
+                            </div>
+                            <div class="brand-image-overlay"></div>
+                            <div class="brand-image-overlay-side"></div>
+                            <div class="brand-image-content">
+                                <span class="brand-label" data-animate>Destinos Destacados</span>
+                                <h2 class="brand-heading">
+                                    <span class="reveal-text" data-animate>Maldivas</span>
+                                    <br>
+                                </h2>
+                                <a href="#reservas" class="cta-button">Reservar</a>
+
+                            </div>
+                        </div>
+
+                        <div class="brand-text">
+                            <p data-animate>Escapa al lujo absoluto en atolones de ensueño con bungalows sobre el agua,
+                                snorkel
+                                en
+                                arrecifes de coral y atardeceres inolvidables.</p>
+                            <p data-animate> Ideal para relajación total y escapadas románticas.</p>
+                        </div>
+                        <br>
+
+                        <!-- Tajeta montaña -->
+                        <div class="brand-image-wrapper" data-animate>
+                            <div class="brand-image-container">
+                                <img src="https://englishpluspodcast.com/wp-content/uploads/2023/11/The-Stunning-Beauty-of-the-Swiss-Alps-jpg.webp"
+                                    alt="Alpes Suizos - Montañas nevadas">
+                            </div>
+                            <div class="brand-image-overlay"></div>
+                            <div class="brand-image-overlay-side"></div>
+                            <div class="brand-image-content">
+                                <span class="brand-label" data-animate>Destinos Destacados</span>
+                                <h2 class="brand-heading">
+                                    <span class="reveal-text" data-animate>Alpes Suizos, Suiza</span>
+                                    <br>
+                                </h2>
+                                <a href="#reservas" class="cta-button">Reservar</a>
+
+                            </div>
+                        </div>
+
+
+                        <div class="brand-text">
+                            <p data-animate>Conquista picos nevados, esquía en estaciones de clase mundial y disfruta de
+                                vistas panorámicas en trenes
+                                escénicos.</p>
+                            <p data-animate> Perfecto para amantes de la naturaleza y deportes de invierno.
+
+                            </p>
+                        </div>
+                        <br>
+
+                        <!--Tarjeta Montaña Patagonia-->
+
+                        <div class="brand-image-wrapper" data-animate>
+                            <div class="brand-image-container">
+                                <img src="https://res.cloudinary.com/activeadventures/image/upload/c_limit,w_3840/dpr_auto/f_auto/q_auto/v1/gqtbintognewezphnyil?_a=BAVMn6AQ0"
+                                    alt="Hiking en Patagonia - Montañas y lago">
+                            </div>
+                            <div class="brand-image-overlay"></div>
+                            <div class="brand-image-overlay-side"></div>
+                            <div class="brand-image-content">
+                                <span class="brand-label" data-animate>Destinos Destacados</span>
+                                <h2 class="brand-heading">
+                                    <span class="reveal-text" data-animate>Patagonia, Argentina/Chile</span>
+                                    <br>
+                                </h2>
+                                <a href="#reservas" class="cta-button">Reservar</a>
+
+                            </div>
+                        </div>
+
+
+                        <div class="brand-text">
+                            <p data-animate>Explora glaciares imponentes, treka en senderos épicos y observa fauna
+                                única.
+                            </p>
+                            <p data-animate> Una aventura para
+                                almas intrépidas que buscan desconexión en paisajes salvajes.
+                            </p>
+                        </div>
+                        <br>
+
+                        <!-- Tarjeta Ciudad: Nueva York -->
+
+
+
+                        <div class="brand-image-wrapper" data-animate>
+                            <div class="brand-image-container">
+                                <img src="https://www.hola.com/horizon/landscape/f5da0bb6fb7f-nueva-york-manhattan-maravillas-desde-mi-pantalla-t.jpg"
+                                    alt="Skyline de Nueva York - Empire State">
+                            </div>
+                            <div class="brand-image-overlay"></div>
+                            <div class="brand-image-overlay-side"></div>
+                            <div class="brand-image-content">
+                                <span class="brand-label" data-animate>Destinos Destacados</span>
+                                <h2 class="brand-heading">
+                                    <span class="reveal-text" data-animate>Nueva York, Estados Unidos</span>
+                                    <br>
+                                </h2>
+                                <a href="#reservas" class="cta-button">Reservar</a>
+
+                            </div>
+                        </div>
+
+
+                        <div class="brand-text">
+                            <p data-animate>Vive el pulso de la Gran Manzana: rascacielos icónicos, Broadway, Central
+                                Park y
+                                gastronomía
+                                diversa.
+                            </p>
+                            <p data-animate> Ideal para viajes culturales y shopping de lujo.
+                            </p>
+                        </div>
+                        <br>
+
+
+
+                        <!-- Tarjeta Ciudad: Roma -->
+
+                        <div class="brand-image-wrapper" data-animate>
+                            <div class="brand-image-container">
+                                <img src="https://cdn.britannica.com/36/162636-050-932C5D49/Colosseum-Rome-Italy.jpg"
+                                    alt="Coliseo en Roma, Italia">
+                            </div>
+                            <div class="brand-image-overlay"></div>
+                            <div class="brand-image-overlay-side"></div>
+                            <div class="brand-image-content">
+                                <span class="brand-label" data-animate>Destinos Destacados</span>
+                                <h2 class="brand-heading">
+                                    <span class="reveal-text" data-animate>Roma, Italia</span>
+                                    <br>
+                                </h2>
+                                <a href="#reservas" class="cta-button">Reservar</a>
+
+                            </div>
+                        </div>
+
+
+                        <div class="brand-text">
+                            <p data-animate>Camina por la historia eterna: Coliseo, Vaticano y Fontana di Trevi.
+                            </p>
+                            <p data-animate> Degusta pasta auténtica y gelato en una ciudad que combina antigüedad con
+                                modernidad.
+                            </p>
+                        </div>
+                        <br>
+
+
+                        <!-- Tarjeta Aventura: Safari África -->
+                        <div class="brand-image-wrapper" data-animate>
+                            <div class="brand-image-container">
+                                <img src="https://www.benciaafricaadventure.com/wp-content/uploads/2025/06/Masai-Mara-Big-Five-Safaris.jpg"
+                                    alt="Safari en África - Elefantes en la sabana">
+                            </div>
+                            <div class="brand-image-overlay"></div>
+                            <div class="brand-image-overlay-side"></div>
+                            <div class="brand-image-content">
+                                <span class="brand-label" data-animate>Destinos Destacados</span>
+                                <h2 class="brand-heading">
+                                    <span class="reveal-text" data-animate>Safari en África (Kenia/Tanzania)</span>
+                                    <br>
+                                </h2>
+                                <a href="#reservas" class="cta-button">Reservar</a>
+
+                            </div>
+                        </div>
+
+
+                        <div class="brand-text">
+                            <p data-animate>Observa los Big Five en su hábitat natural, acampa bajo estrellas africanas
+                                y
+                                vive la migración de ñus.
+                            </p>
+                            <p data-animate> Una experiencia transformadora para amantes de la wildlife.
+                            </p>
+                        </div>
+                        <br>
+                    </section>
+
+
+
+
             </div>
+
+
+
+        </section>
+
+
+
+
         </section>
 
         <!-- Yacht Morph Section -->
@@ -149,23 +405,6 @@
                     <p class="yacht-sub">Engineered from the inside out.</p>
                 </div>
 
-                <!-- Stats -->
-                <div class="yacht-stats-left" id="yacht-stats-left">
-                    <div class="yacht-stat"><span class="yacht-stat-value">42m</span><span
-                            class="yacht-stat-label">Length</span></div>
-                    <div class="yacht-stat"><span class="yacht-stat-value">12</span><span
-                            class="yacht-stat-label">Guests</span></div>
-                    <div class="yacht-stat"><span class="yacht-stat-value">5</span><span
-                            class="yacht-stat-label">Suites</span></div>
-                </div>
-                <div class="yacht-stats-right" id="yacht-stats-right">
-                    <div class="yacht-stat"><span class="yacht-stat-value">28kn</span><span
-                            class="yacht-stat-label">Speed</span></div>
-                    <div class="yacht-stat"><span class="yacht-stat-value">3,000nm</span><span
-                            class="yacht-stat-label">Range</span></div>
-                    <div class="yacht-stat"><span class="yacht-stat-value">8</span><span
-                            class="yacht-stat-label">Crew</span></div>
-                </div>
             </div>
         </section>
 
@@ -346,12 +585,11 @@
                     <h3 class="footer-col-title">Social</h3>
                     <a href="#">Instagram</a>
                     <a href="#">LinkedIn</a>
-                    <a href="#">WhatsApp</a>
+                    <a href="https://wa.link/59xl3g">WhatsApp</a>
                 </div>
                 <div class="footer-col">
                     <h3 class="footer-col-title">Contact</h3>
                     <p>charter@yacht.com</p>
-                    <p>+33 6 00 00 00 00</p>
                 </div>
                 <div class="footer-col">
                     <h3 class="footer-col-title">Ports</h3>
@@ -365,7 +603,6 @@
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms</a>
                     <a href="#">Cookies</a>
-                    <a href="https://wa.link/59xl3g" target="_blank">WhatsApp</a>
                 </div>
                 <p class="footer-copyright">&copy; <span id="year"></span> Yacht. All rights reserved.</p>
             </div>

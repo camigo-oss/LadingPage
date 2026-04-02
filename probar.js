@@ -6,8 +6,8 @@ const HERO_FRAME_END = 1239;
 const HERO_TOTAL_FRAMES = HERO_FRAME_END - HERO_FRAME_START + 1;
 
 const YACHT_FRAME_START = 2000;
-const YACHT_FRAME_END = 2222;
-const YACHT_TOTAL_FRAMES = YACHT_FRAME_END - YACHT_FRAME_START + 1;
+const YACHT_FRAME_END = 2049;
+const YACHT_TOTAL_FRAMES = YACHT_FRAME_END - YACHT_FRAME_START + 0.05;
 
 const HERO_TEXT_OVERLAYS = [
   { id: 'hero-overlay-1', inStart: 0.32, inEnd: 0.40, outStart: 0.55, outEnd: 0.62 },
@@ -15,9 +15,11 @@ const HERO_TEXT_OVERLAYS = [
 ];
 
 const YACHT_TEXT_OVERLAYS = [
-  { id: 'yacht-overlay-1', position: 'left', inStart: 0.0, inEnd: 0.08, outStart: 0.22, outEnd: 0.28 },
-  { id: 'yacht-overlay-2', position: 'right', inStart: 0.26, inEnd: 0.34, outStart: 0.48, outEnd: 0.54 },
-  { id: 'yacht-overlay-3', position: 'left', inStart: 0.52, inEnd: 0.60, outStart: 0.74, outEnd: 0.80 }
+  { id: 'yacht-overlay-1', position: 'left', inStart: 0.0, inEnd: 0.08, outStart: 0.15, outEnd: 0.19 },
+  { id: 'yacht-overlay-2', position: 'right', inStart: 0.20, inEnd: 0.28, outStart: 0.35, outEnd: 0.39 },
+  { id: 'yacht-overlay-3', position: 'left', inStart: 0.40, inEnd: 0.48, outStart: 0.55, outEnd: 0.59 },
+  { id: 'yacht-overlay-4', position: 'right', inStart: 0.60, inEnd: 0.68, outStart: 0.75, outEnd: 0.79 },
+  { id: 'yacht-overlay-5', position: 'left', inStart: 0.80, inEnd: 0.88, outStart: 0.95, outEnd: 0.99 }
 ];
 
 // ========================================
