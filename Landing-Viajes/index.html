@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viajes Estelares — Agencia de Viajes</title>
+  <meta name="description"
+    content="Descubre los destinos más increíbles del mundo. Paquetes exclusivos, experiencias únicas y precios inmejorables.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- CURSOR PERSONALIZADO -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower">
+    <span class="cursor-label" id="cursor-label"></span>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#inicio" class="navbar-logo">
+        <span class="logo-star">✦</span>
+        <span class="logo-text">Viajes Estelares</span>
+      </a>
+      <div class="navbar-links" id="navbar-links">
+        <a href="#inicio" class="nav-link" data-section="inicio">Inicio</a>
+        <a href="#destinos" class="nav-link" data-section="destinos">Destinos</a>
+        <a href="#paquetes" class="nav-link" data-section="paquetes">Paquetes</a>
+        <a href="#promociones" class="nav-link" data-section="promociones">Ofertas</a>
+        <a href="#testimonios" class="nav-link" data-section="testimonios">Testimonios</a>
+        <a href="#reservas" class="nav-link nav-cta" data-section="reservas">Reservar</a>
+        <button class="nav-favorites" id="nav-favorites" aria-label="Favoritos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+            </path>
+          </svg>
+          <span class="favorites-count" id="favorites-count">0</span>
+        </button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#inicio" class="mobile-link">Inicio</a>
+      <a href="#destinos" class="mobile-link">Destinos</a>
+      <a href="#paquetes" class="mobile-link">Paquetes</a>
+      <a href="#promociones" class="mobile-link">Ofertas</a>
+      <a href="#testimonios" class="mobile-link">Testimonios</a>
+      <a href="#reservas" class="mobile-link mobile-link-cta">Reservar ahora</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ======================== HERO CINEMATOGRÁFICO ======================== -->
+    <section class="hero-section" id="inicio">
+      <!-- Capas de scroll parallax + keyframe animation -->
+      <div class="hero-scroll-stage" id="hero-scroll-stage">
+
+        <!-- Capa 1: Imagen base con grain -->
+        <div class="hero-layer hero-layer-base" id="hero-layer-base">
+          <div class="hero-img-wrap" id="hero-img-wrap">
+            <img class="hero-main-img" id="hero-main-img"
+              src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=2400&q=90" alt="Destinos del mundo">
+            <div class="hero-grain"></div>
+          </div>
+        </div>
+
+        <!-- Capa 2: Color overlay con animación -->
+        <div class="hero-layer hero-layer-color" id="hero-layer-color"></div>
+
+        <!-- Capa 3: Líneas decorativas geométricas -->
+
+        <div class="hero-layer hero-layer-geo" aria-hidden="true">
+          <!-- <div class="geo-line geo-line-h1"></div>-->
+          <!--<div class="geo-line geo-line-h2"></div>-->
+          <!--<div class="geo-line geo-line-v1"></div>-->
+          <!--  <div class="geo-circle"></div> -->
+          <!--<div class="geo-corner geo-corner-tl"></div>-->
+          <!--<div class="geo-corner geo-corner-br"></div>-->
+        </div>
+
+        <!-- Capa 4: Contenido -->
+        <div class="hero-layer hero-layer-content">
+          <div class="hero-content-inner">
+            <div class="hero-tag-row">
+              <span class="hero-tag">✦ Tu agencia de confianza</span>
+              <span class="hero-year">Est. 2026</span>
+            </div>
+            <h1 class="hero-title">
+              <span class="hero-word" data-delay="0">Des</span><span class="hero-word hero-word-italic"
+                data-delay="80">cubre</span><br>
+              <span class="hero-word" data-delay="160">el</span>&nbsp;<span class="hero-word hero-word-gold"
+                data-delay="240">mundo</span><br>
+              <span class="hero-word hero-word-outline" data-delay="320">sin</span>&nbsp;<span class="hero-word"
+                data-delay="400">límites</span>
+            </h1>
+            <p class="hero-sub">Experiencias únicas. Destinos soñados.<br>Memorias para toda la vida.</p>
+            <div class="hero-actions">
+              <a href="#destinos" class="btn-primary">
+                <span>Explorar destinos</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#paquetes" class="btn-ghost">Ver paquetes</a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat"><span class="stat-n" data-target="2400">0</span><span class="stat-l">Viajeros
+                  felices</span></div>
+              <div class="hero-stat-div"></div>
+              <div class="hero-stat"><span class="stat-n" data-target="48">0</span><span class="stat-l">Destinos
+                  activos</span></div>
+              <div class="hero-stat-div"></div>
+              <div class="hero-stat"><span class="stat-n" data-target="12">0</span><span class="stat-l">Años de
+                  experiencia</span></div>
+            </div>
+          </div>
+
+          <!-- Scroll indicator lateral -->
+          <div class="hero-scroll-hint">
+            <div class="scroll-track">
+              <div class="scroll-thumb" id="scroll-thumb"></div>
+            </div>
+            <span class="scroll-label">Scroll</span>
+          </div>
+
+          <!-- Imagen flotante decorativa -->
+
+
+          <!-- Capa 5: Texto decorativo grande -->
+          <div class="hero-bg-text" aria-hidden="true">TRAVEL</div>
+
+        </div>
+
+        <!-- Indicador de scroll inferior -->
+        <div class="hero-scroll-bar">
+          <div class="hero-scroll-bar-fill" id="hero-scroll-fill"></div>
+        </div>
+    </section>
+
+    <!-- ======================== TICKER ======================== -->
+    <div class="ticker-section" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Cancún ✦</span><span>Bali ✦</span><span>Maldivas ✦</span><span>Alpes Suizos ✦</span><span>Patagonia
+          ✦</span><span>Nueva York ✦</span><span>Roma ✦</span><span>Safari África ✦</span>
+        <span>Cancún ✦</span><span>Bali ✦</span><span>Maldivas ✦</span><span>Alpes Suizos ✦</span><span>Patagonia
+          ✦</span><span>Nueva York ✦</span><span>Roma ✦</span><span>Safari África ✦</span>
+        <span>Cancún ✦</span><span>Bali ✦</span><span>Maldivas ✦</span><span>Alpes Suizos ✦</span><span>Patagonia
+          ✦</span><span>Nueva York ✦</span><span>Roma ✦</span><span>Safari África ✦</span>
+      </div>
+    </div>
+
+    <!-- ======================== DESTINOS ======================== -->
+    <section id="destinos" class="section-destinos">
+      <div class="section-header" data-animate>
+        <span class="section-eyebrow">✦ Destinos Destacados</span>
+        <h2 class="section-title">¿A dónde quieres <em>escapar?</em></h2>
+        <p class="section-subtitle">Explora nuestra selección curada de los destinos más extraordinarios del planeta.
+        </p>
+      </div>
+
+      <div class="filtros-bar" id="filtros-bar">
+        <button class="filtro-btn active" data-filtro="all">Todos</button>
+        <button class="filtro-btn" data-filtro="playa">🏖 Playa</button>
+        <button class="filtro-btn" data-filtro="montana">⛰ Montaña</button>
+        <button class="filtro-btn" data-filtro="ciudad">🏛 Ciudad</button>
+        <button class="filtro-btn" data-filtro="aventura">🌿 Aventura</button>
+      </div>
+
+      <div class="destinos-grid" id="destinos-grid">
+
+        <!-- Cancún -->
+        <article class="destino-card" data-tipo="playa" data-precio="1299" data-dias="7" data-id="cancun"
+          data-gallery='["https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=800&q=80","https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=800&q=80","https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80","https://images.unsplash.com/photo-1573047014236-1e80e6f4ef17?w=800&q=80"]'>
+          <div class="card-media">
+            <div class="card-gallery-wrap">
+              <img class="card-img card-img-active"
+                src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=800&q=80" alt="Cancún México"
+                loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=800&q=80"
+                alt="Cancún" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80"
+                alt="Cancún" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1573047014236-1e80e6f4ef17?w=800&q=80"
+                alt="Cancún" loading="lazy">
+            </div>
+            <div class="card-gallery-dots"></div>
+            <div class="card-media-overlay"></div>
+            <button class="card-fav" data-id="cancun" aria-label="Añadir a favoritos">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+            <span class="card-badge">Más popular</span>
+            <div class="card-tipo-tag">Playa</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              México
+            </div>
+            <h3 class="card-title">Cancún</h3>
+            <p class="card-desc">Aguas cristalinas del Caribe, ruinas mayas y vida nocturna vibrante en un paraíso
+              tropical.</p>
+            <div class="card-meta">
+              <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-n">4.9</span></div>
+              <div class="card-dias">7 días</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-precio"><span class="desde">desde</span><span class="precio-n">$1.299</span></div>
+              <a href="#reservas" class="card-btn" data-destino="Cancún">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bali -->
+        <article class="destino-card" data-tipo="playa" data-precio="1599" data-dias="10" data-id="bali"
+          data-gallery='["https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80","https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80","https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80","https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800&q=80"]'>
+          <div class="card-media">
+            <div class="card-gallery-wrap">
+              <img class="card-img card-img-active"
+                src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80" alt="Bali Indonesia"
+                loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80"
+                alt="Bali" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80"
+                alt="Bali" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800&q=80"
+                alt="Bali" loading="lazy">
+            </div>
+            <div class="card-gallery-dots"></div>
+            <div class="card-media-overlay"></div>
+            <button class="card-fav" data-id="bali" aria-label="Añadir a favoritos">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+            <div class="card-tipo-tag">Playa</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              Indonesia
+            </div>
+            <h3 class="card-title">Bali</h3>
+            <p class="card-desc">Templos milenarios, arrozales verdes, surf y spas de lujo en la isla de los dioses.</p>
+            <div class="card-meta">
+              <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-n">4.8</span></div>
+              <div class="card-dias">10 días</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-precio"><span class="desde">desde</span><span class="precio-n">$1.599</span></div>
+              <a href="#reservas" class="card-btn" data-destino="Bali">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Maldivas FEATURED -->
+        <article class="destino-card destino-card-featured" data-tipo="playa" data-precio="2999" data-dias="7"
+          data-id="maldivas"
+          data-gallery='["https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80","https://images.unsplash.com/photo-1540202404-1b927e27fa8b?w=800&q=80","https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80","https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&q=80"]'>
+          <div class="card-media">
+            <div class="card-gallery-wrap">
+              <img class="card-img card-img-active"
+                src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80" alt="Maldivas"
+                loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1540202404-1b927e27fa8b?w=800&q=80"
+                alt="Maldivas" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80"
+                alt="Maldivas" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&q=80"
+                alt="Maldivas" loading="lazy">
+            </div>
+            <div class="card-gallery-dots"></div>
+            <div class="card-media-overlay"></div>
+            <button class="card-fav" data-id="maldivas" aria-label="Añadir a favoritos">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+            <span class="card-badge card-badge-luxury">Lujo</span>
+            <div class="card-tipo-tag">Playa</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              Océano Índico
+            </div>
+            <h3 class="card-title">Maldivas</h3>
+            <p class="card-desc">Bungalows sobre el agua, arrecifes de coral y atardeceres que dejan sin palabras.</p>
+            <div class="card-meta">
+              <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-n">5.0</span></div>
+              <div class="card-dias">7 días</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-precio"><span class="desde">desde</span><span class="precio-n">$2.999</span></div>
+              <a href="#reservas" class="card-btn" data-destino="Maldivas">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Alpes -->
+        <article class="destino-card" data-tipo="montana" data-precio="1899" data-dias="8" data-id="alpes"
+          data-gallery='["https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80","https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80","https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=800&q=80","https://images.unsplash.com/photo-1548777123-e216912df7d8?w=800&q=80"]'>
+          <div class="card-media">
+            <div class="card-gallery-wrap">
+              <img class="card-img card-img-active"
+                src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80" alt="Alpes Suizos"
+                loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
+                alt="Alpes" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=800&q=80"
+                alt="Alpes" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1548777123-e216912df7d8?w=800&q=80"
+                alt="Alpes" loading="lazy">
+            </div>
+            <div class="card-gallery-dots"></div>
+            <div class="card-media-overlay"></div>
+            <button class="card-fav" data-id="alpes" aria-label="Añadir a favoritos">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+            <div class="card-tipo-tag">Montaña</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              Suiza
+            </div>
+            <h3 class="card-title">Alpes Suizos</h3>
+            <p class="card-desc">Picos nevados, estaciones de esquí de clase mundial y trenes panorámicos de ensueño.
+            </p>
+            <div class="card-meta">
+              <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-n">4.7</span></div>
+              <div class="card-dias">8 días</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-precio"><span class="desde">desde</span><span class="precio-n">$1.899</span></div>
+              <a href="#reservas" class="card-btn" data-destino="Alpes Suizos">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Patagonia -->
+        <article class="destino-card" data-tipo="montana" data-precio="2499" data-dias="12" data-id="patagonia"
+          data-gallery='["https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80","https://images.unsplash.com/photo-1541789094913-f3809aea3f35?w=800&q=80","https://images.unsplash.com/photo-1478827217976-7214a0556393?w=800&q=80","https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80"]'>
+          <div class="card-media">
+            <div class="card-gallery-wrap">
+              <img class="card-img card-img-active"
+                src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80" alt="Patagonia"
+                loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1541789094913-f3809aea3f35?w=800&q=80"
+                alt="Patagonia" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1478827217976-7214a0556393?w=800&q=80"
+                alt="Patagonia" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80"
+                alt="Patagonia" loading="lazy">
+            </div>
+            <div class="card-gallery-dots"></div>
+            <div class="card-media-overlay"></div>
+            <button class="card-fav" data-id="patagonia" aria-label="Añadir a favoritos">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+            <div class="card-tipo-tag">Montaña</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              Argentina / Chile
+            </div>
+            <h3 class="card-title">Patagonia</h3>
+            <p class="card-desc">Glaciares impresionantes, senderos épicos y fauna salvaje en los confines del mundo.
+            </p>
+            <div class="card-meta">
+              <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-n">4.9</span></div>
+              <div class="card-dias">12 días</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-precio"><span class="desde">desde</span><span class="precio-n">$2.499</span></div>
+              <a href="#reservas" class="card-btn" data-destino="Patagonia">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Nueva York -->
+        <article class="destino-card" data-tipo="ciudad" data-precio="1199" data-dias="6" data-id="nueva-york"
+          data-gallery='["https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80","https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=800&q=80","https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80","https://images.unsplash.com/photo-1522083165195-3424ed129620?w=800&q=80"]'>
+          <div class="card-media">
+            <div class="card-gallery-wrap">
+              <img class="card-img card-img-active"
+                src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80" alt="Nueva York"
+                loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=800&q=80"
+                alt="Nueva York" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80"
+                alt="Nueva York" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1522083165195-3424ed129620?w=800&q=80"
+                alt="Nueva York" loading="lazy">
+            </div>
+            <div class="card-gallery-dots"></div>
+            <div class="card-media-overlay"></div>
+            <button class="card-fav" data-id="nueva-york" aria-label="Añadir a favoritos">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+            <div class="card-tipo-tag">Ciudad</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              Estados Unidos
+            </div>
+            <h3 class="card-title">Nueva York</h3>
+            <p class="card-desc">Broadway, Central Park, rascacielos icónicos y la mejor gastronomía multicultural del
+              mundo.</p>
+            <div class="card-meta">
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-n">4.6</span></div>
+              <div class="card-dias">6 días</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-precio"><span class="desde">desde</span><span class="precio-n">$1.199</span></div>
+              <a href="#reservas" class="card-btn" data-destino="Nueva York">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Roma -->
+        <article class="destino-card" data-tipo="ciudad" data-precio="999" data-dias="5" data-id="roma"
+          data-gallery='["https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80","https://images.unsplash.com/photo-1529260830199-42c24126f198?w=800&q=80","https://images.unsplash.com/photo-1499250987142-56c9a4d5b99b?w=800&q=80","https://images.unsplash.com/photo-1568797629192-789acf8e4df3?w=800&q=80"]'>
+          <div class="card-media">
+            <div class="card-gallery-wrap">
+              <img class="card-img card-img-active"
+                src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80" alt="Roma Italia"
+                loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=800&q=80"
+                alt="Roma" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1499250987142-56c9a4d5b99b?w=800&q=80"
+                alt="Roma" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1568797629192-789acf8e4df3?w=800&q=80"
+                alt="Roma" loading="lazy">
+            </div>
+            <div class="card-gallery-dots"></div>
+            <div class="card-media-overlay"></div>
+            <button class="card-fav" data-id="roma" aria-label="Añadir a favoritos">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+            <span class="card-badge card-badge-oferta">-20%</span>
+            <div class="card-tipo-tag">Ciudad</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              Italia
+            </div>
+            <h3 class="card-title">Roma</h3>
+            <p class="card-desc">El Coliseo, el Vaticano, la Fontana di Trevi y pasta auténtica en la ciudad eterna.</p>
+            <div class="card-meta">
+              <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-n">4.8</span></div>
+              <div class="card-dias">5 días</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-precio"><span class="desde">desde</span><span class="precio-n">$999</span></div>
+              <a href="#reservas" class="card-btn" data-destino="Roma">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Safari África -->
+        <article class="destino-card" data-tipo="aventura" data-precio="3299" data-dias="10" data-id="safari"
+          data-gallery='["https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&q=80","https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80","https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80","https://images.unsplash.com/photo-1504173010664-32509107de59?w=800&q=80"]'>
+          <div class="card-media">
+            <div class="card-gallery-wrap">
+              <img class="card-img card-img-active"
+                src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&q=80" alt="Safari África"
+                loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80"
+                alt="Safari" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80"
+                alt="Safari" loading="lazy">
+              <img class="card-img" src="https://images.unsplash.com/photo-1504173010664-32509107de59?w=800&q=80"
+                alt="Safari" loading="lazy">
+            </div>
+            <div class="card-gallery-dots"></div>
+            <div class="card-media-overlay"></div>
+            <button class="card-fav" data-id="safari" aria-label="Añadir a favoritos">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+            <div class="card-tipo-tag">Aventura</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              Kenia / Tanzania
+            </div>
+            <h3 class="card-title">Safari en África</h3>
+            <p class="card-desc">Los Big Five en su hábitat natural, migración de ñus y cielos llenos de estrellas
+              africanas.</p>
+            <div class="card-meta">
+              <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-n">5.0</span></div>
+              <div class="card-dias">10 días</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-precio"><span class="desde">desde</span><span class="precio-n">$3.299</span></div>
+              <a href="#reservas" class="card-btn" data-destino="Safari en África">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Panel Favoritos -->
+      <div class="favoritos-panel" id="favoritos-panel">
+        <div class="fav-panel-header">
+          <span>✦ Mis favoritos</span>
+          <button class="fav-panel-close" id="fav-panel-close">×</button>
+        </div>
+        <div class="fav-panel-body" id="fav-panel-body">
+          <p class="fav-empty">Aún no has guardado ningún destino.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================== EXPERIENCIAS STRIP ======================== -->
+    <section class="experiencias-section">
+      <div class="experiencias-inner">
+        <div class="exp-item" data-animate>
+          <div class="exp-num">01</div>
+          <div class="exp-icon">✈️</div>
+          <h3>Vuelos seleccionados</h3>
+          <p>Las mejores aerolíneas con las tarifas más competitivas del mercado.</p>
+        </div>
+        <div class="exp-divider"></div>
+        <div class="exp-item" data-animate>
+          <div class="exp-num">02</div>
+          <div class="exp-icon">🏨</div>
+          <h3>Hoteles boutique</h3>
+          <p>Alojamientos únicos con carácter. Nada de cadenas genéricas.</p>
+        </div>
+        <div class="exp-divider"></div>
+        <div class="exp-item" data-animate>
+          <div class="exp-num">03</div>
+          <div class="exp-icon">🗺️</div>
+          <h3>Guías locales</h3>
+          <p>Expertos en cada destino que revelan lo que los turistas nunca ven.</p>
+        </div>
+        <div class="exp-divider"></div>
+        <div class="exp-item" data-animate>
+          <div class="exp-num">04</div>
+          <div class="exp-icon">🛡️</div>
+          <h3>Viaja seguro</h3>
+          <p>Seguro completo, cancelación gratuita y asistencia 24/7 incluida.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== PAQUETES ======================== -->
+    <section id="paquetes" class="section-paquetes">
+      <div class="section-header" data-animate>
+        <span class="section-eyebrow">✦ Nuestros Paquetes</span>
+        <h2 class="section-title">Elige tu <em>experiencia</em></h2>
+        <p class="section-subtitle">Paquetes diseñados para cada tipo de viajero, con todo incluido.</p>
+      </div>
+      <div class="paquetes-grid">
+        <article class="paquete-card" data-animate>
+          <div class="paquete-icon">🌊</div>
+          <div class="paquete-tag">Escapada</div>
+          <h3 class="paquete-nombre">Fin de Semana</h3>
+          <div class="paquete-precio-wrap">
+            <span class="paquete-desde">desde</span>
+            <span class="paquete-precio">$499</span>
+            <span class="paquete-per">/ persona</span>
+          </div>
+          <ul class="paquete-features">
+            <li class="feat-yes">2 noches en hotel seleccionado</li>
+            <li class="feat-yes">Vuelos incluidos</li>
+            <li class="feat-yes">Traslados aeropuerto</li>
+            <li class="feat-yes">Desayuno incluido</li>
+            <li class="feat-no">Guía turístico</li>
+            <li class="feat-no">Actividades</li>
+          </ul>
+          <a href="#reservas" class="paquete-btn" data-paquete="Fin de Semana">Elegir plan</a>
+        </article>
+        <article class="paquete-card paquete-featured" data-animate>
+          <div class="paquete-featured-label">★ Más elegido</div>
+          <div class="paquete-icon">✈️</div>
+          <div class="paquete-tag">Aventura</div>
+          <h3 class="paquete-nombre">Semana Completa</h3>
+          <div class="paquete-precio-wrap">
+            <span class="paquete-desde">desde</span>
+            <span class="paquete-precio">$1.299</span>
+            <span class="paquete-per">/ persona</span>
+          </div>
+          <ul class="paquete-features">
+            <li class="feat-yes">7 noches en hotel 4★</li>
+            <li class="feat-yes">Vuelos incluidos</li>
+            <li class="feat-yes">Traslados aeropuerto</li>
+            <li class="feat-yes">Desayuno y cena</li>
+            <li class="feat-yes">Guía turístico local</li>
+            <li class="feat-yes">2 actividades incluidas</li>
+          </ul>
+          <a href="#reservas" class="paquete-btn paquete-btn-featured" data-paquete="Semana Completa">Elegir plan</a>
+        </article>
+        <article class="paquete-card" data-animate>
+          <div class="paquete-icon">👑</div>
+          <div class="paquete-tag">Premium</div>
+          <h3 class="paquete-nombre">Gran Expedición</h3>
+          <div class="paquete-precio-wrap">
+            <span class="paquete-desde">desde</span>
+            <span class="paquete-precio">$2.999</span>
+            <span class="paquete-per">/ persona</span>
+          </div>
+          <ul class="paquete-features">
+            <li class="feat-yes">14 noches en hotel 5★</li>
+            <li class="feat-yes">Vuelos business class</li>
+            <li class="feat-yes">Traslados privados</li>
+            <li class="feat-yes">Todo incluido</li>
+            <li class="feat-yes">Guía privado 24/7</li>
+            <li class="feat-yes">Actividades ilimitadas</li>
+          </ul>
+          <a href="#reservas" class="paquete-btn" data-paquete="Gran Expedición">Elegir plan</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======================== PROMOCIONES ======================== -->
+    <section id="promociones" class="section-promo">
+      <div class="promo-inner" data-animate>
+        <div class="promo-text">
+          <span class="section-eyebrow">✦ Oferta especial</span>
+          <h2 class="promo-title">20% de descuento<br>en reservas de <em>julio</em></h2>
+          <p class="promo-sub">Usa el código <strong>VERANO25</strong> al reservar cualquier paquete de más de 7 días.
+            Válido hasta el 30 de junio.</p>
+          <a href="#reservas" class="btn-primary">Aprovechar oferta</a>
+        </div>
+        <div class="promo-visual">
+          <div class="promo-countdown" id="promo-countdown">
+            <div class="countdown-block"><span class="cd-n" id="cd-days">00</span><span class="cd-l">días</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-block"><span class="cd-n" id="cd-hours">00</span><span class="cd-l">horas</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-block"><span class="cd-n" id="cd-mins">00</span><span class="cd-l">min</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== TESTIMONIOS ======================== -->
+    <section id="testimonios" class="section-testimonios">
+      <div class="section-header" data-animate>
+        <span class="section-eyebrow">✦ Testimonios</span>
+        <h2 class="section-title">Lo que dicen nuestros <em>viajeros</em></h2>
+      </div>
+      <div class="testimonios-slider" id="testimonios-slider">
+        <div class="testimonios-track" id="testimonios-track">
+          <div class="testimonio-card">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-text">"El viaje a Bali superó todas mis expectativas. El equipo de Viajes Estelares organizó
+              cada detalle a la perfección. Sin duda repetiré."</p>
+            <div class="test-autor">
+              <div class="test-avatar">MG</div>
+              <div><strong>María González</strong><span>Madrid · Viaje a Bali</span></div>
+            </div>
+          </div>
+          <div class="testimonio-card">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-text">"El safari en Kenia fue una experiencia transformadora. Ver a los leones de cerca...
+              simplemente alucinante. Gracias por hacer realidad este sueño."</p>
+            <div class="test-autor">
+              <div class="test-avatar">JR</div>
+              <div><strong>Javier Ruiz</strong><span>Barcelona · Safari en África</span></div>
+            </div>
+          </div>
+          <div class="testimonio-card">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-text">"Las Maldivas en bungalow sobre el agua, un sueño hecho realidad. La atención fue
+              impecable desde la primera llamada hasta el regreso a casa."</p>
+            <div class="test-autor">
+              <div class="test-avatar">AL</div>
+              <div><strong>Ana López</strong><span>Valencia · Maldivas</span></div>
+            </div>
+          </div>
+          <div class="testimonio-card">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-text">"Patagonia con la familia fue épico. Glaciares, pingüinos y paisajes de otro planeta.
+              El guía local fue excepcional. 100% recomendado."</p>
+            <div class="test-autor">
+              <div class="test-avatar">PC</div>
+              <div><strong>Pedro Castillo</strong><span>Sevilla · Patagonia</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-dots" id="slider-dots"></div>
+        <div class="slider-nav">
+          <button class="slider-prev" id="slider-prev">←</button>
+          <button class="slider-next" id="slider-next">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== RESERVAS ======================== -->
+    <section id="reservas" class="section-reservas">
+      <div class="reservas-wrapper">
+        <div class="reservas-info" data-animate>
+          <span class="section-eyebrow">✦ Reservas</span>
+          <h2 class="reservas-title">Tu aventura<br>empieza <em>aquí</em></h2>
+          <p class="reservas-sub">Completa el formulario y te contactamos en menos de 24 horas para diseñar tu viaje
+            perfecto.</p>
+          <div class="reservas-garantias">
+            <div class="garantia"><span class="garantia-icon">🔒</span><span>Pago 100% seguro</span></div>
+            <div class="garantia"><span class="garantia-icon">↩️</span><span>Cancelación gratuita</span></div>
+            <div class="garantia"><span class="garantia-icon">💬</span><span>Asesor personal</span></div>
+          </div>
+        </div>
+        <div class="reservas-form-wrap">
+          <div class="form-steps" id="form-steps">
+            <div class="form-step active" data-step="1"><span class="step-num">1</span><span
+                class="step-label">Destino</span></div>
+            <div class="step-connector"></div>
+            <div class="form-step" data-step="2"><span class="step-num">2</span><span class="step-label">Viajeros</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="form-step" data-step="3"><span class="step-num">3</span><span class="step-label">Contacto</span>
+            </div>
+          </div>
+          <form class="reserva-form" id="reserva-form">
+            <div class="form-panel active" id="panel-1">
+              <h3 class="panel-title">¿A dónde quieres ir?</h3>
+              <div class="form-field">
+                <label for="destino-input">Destino deseado</label>
+                <select id="destino-input" name="destino" required>
+                  <option value="">Selecciona un destino</option>
+                  <option>Cancún, México</option>
+                  <option>Bali, Indonesia</option>
+                  <option>Maldivas</option>
+                  <option>Alpes Suizos</option>
+                  <option>Patagonia</option>
+                  <option>Nueva York</option>
+                  <option>Roma, Italia</option>
+                  <option>Safari en África</option>
+                  <option>Otro destino</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-field"><label for="fecha-ida">Fecha de ida</label><input type="date" id="fecha-ida"
+                    name="fecha-ida" required></div>
+                <div class="form-field"><label for="fecha-vuelta">Fecha de vuelta</label><input type="date"
+                    id="fecha-vuelta" name="fecha-vuelta" required></div>
+              </div>
+              <div class="form-field">
+                <label for="paquete-input">Tipo de paquete</label>
+                <select id="paquete-input" name="paquete">
+                  <option value="">Cualquier paquete</option>
+                  <option>Fin de Semana (desde $499)</option>
+                  <option>Semana Completa (desde $1.299)</option>
+                  <option>Gran Expedición (desde $2.999)</option>
+                </select>
+              </div>
+              <button type="button" class="btn-step-next" id="step1-next">Continuar →</button>
+            </div>
+            <div class="form-panel" id="panel-2">
+              <h3 class="panel-title">¿Quién viaja?</h3>
+              <div class="counter-group">
+                <div class="counter-row">
+                  <div>
+                    <div class="counter-label">Adultos</div>
+                    <div class="counter-sub">18 años o más</div>
+                  </div>
+                  <div class="counter-ctrl">
+                    <button type="button" class="counter-btn" data-target="adultos" data-op="-">−</button>
+                    <span class="counter-val" id="val-adultos">2</span>
+                    <button type="button" class="counter-btn" data-target="adultos" data-op="+">+</button>
+                  </div>
+                </div>
+                <div class="counter-row">
+                  <div>
+                    <div class="counter-label">Niños</div>
+                    <div class="counter-sub">2 a 17 años</div>
+                  </div>
+                  <div class="counter-ctrl">
+                    <button type="button" class="counter-btn" data-target="ninos" data-op="-">−</button>
+                    <span class="counter-val" id="val-ninos">0</span>
+                    <button type="button" class="counter-btn" data-target="ninos" data-op="+">+</button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-field">
+                <label>Alojamiento preferido</label>
+                <div class="radio-group">
+                  <label class="radio-opt"><input type="radio" name="alojamiento" value="hotel-3"> Hotel 3★</label>
+                  <label class="radio-opt"><input type="radio" name="alojamiento" value="hotel-4" checked> Hotel
+                    4★</label>
+                  <label class="radio-opt"><input type="radio" name="alojamiento" value="hotel-5"> Hotel 5★</label>
+                  <label class="radio-opt"><input type="radio" name="alojamiento" value="resort"> Resort</label>
+                </div>
+              </div>
+              <div class="form-field">
+                <label>Presupuesto aproximado por persona</label>
+                <div class="range-wrap">
+                  <input type="range" id="presupuesto-range" min="500" max="5000" step="100" value="1500">
+                  <div class="range-labels"><span>$500</span><span class="range-val"
+                      id="range-val">$1.500</span><span>$5.000</span></div>
+                </div>
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn-step-back" id="step2-back">← Atrás</button>
+                <button type="button" class="btn-step-next" id="step2-next">Continuar →</button>
+              </div>
+            </div>
+            <div class="form-panel" id="panel-3">
+              <h3 class="panel-title">Tus datos de contacto</h3>
+              <div class="form-row">
+                <div class="form-field"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre"
+                    placeholder="Tu nombre" required></div>
+                <div class="form-field"><label for="apellido">Apellido</label><input type="text" id="apellido"
+                    name="apellido" placeholder="Tu apellido" required></div>
+              </div>
+              <div class="form-field"><label for="email">Email</label><input type="email" id="email" name="email"
+                  placeholder="tu@email.com" required></div>
+              <div class="form-field"><label for="telefono">Teléfono</label><input type="tel" id="telefono"
+                  name="telefono" placeholder="+34 600 000 000"></div>
+              <div class="form-field"><label for="mensaje">Mensaje adicional</label><textarea id="mensaje"
+                  name="mensaje" rows="3" placeholder="Cuéntanos más sobre el viaje que sueñas..."></textarea></div>
+              <div class="form-nav">
+                <button type="button" class="btn-step-back" id="step3-back">← Atrás</button>
+                <button type="submit" class="btn-submit">Enviar solicitud ✦</button>
+              </div>
+            </div>
+            <div class="form-success" id="form-success">
+              <div class="success-icon">✦</div>
+              <h3>¡Solicitud enviada!</h3>
+              <p>Nuestro equipo te contactará en las próximas 24 horas para diseñar tu viaje perfecto.</p>
+              <button type="button" class="btn-ghost" id="form-reset">Nueva solicitud</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top-line"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-star">✦</span><span>Viajes Estelares</span></div>
+        <p>Tu agencia de viajes de confianza para explorar el mundo con experiencias únicas e inolvidables.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg></a>
+          <a href="#" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+              </path>
+            </svg></a>
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg></a>
+        </div>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4>Destinos</h4><a href="#destinos">Playas tropicales</a><a href="#destinos">Montañas y naturaleza</a><a
+            href="#destinos">Ciudades culturales</a><a href="#destinos">Aventura y safari</a>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4><a href="#paquetes">Paquetes todo incluido</a><a href="#paquetes">Viajes
+            personalizados</a><a href="#paquetes">Luna de miel</a><a href="#paquetes">Viajes en grupo</a>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4><a href="#">Sobre nosotros</a><a href="#">Blog de viajes</a><a href="#">Trabaja con
+            nosotros</a><a href="#">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p>hola@viajestelares.com</p>
+          <a href="https://wa.link/59xl3g">WhatsApp</a>
+
+          <p>Lun–Vie 9:00–20:00</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Viajes Estelares. Todos los derechos reservados.</p>
+      <div class="footer-legal"><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Cookies</a></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
