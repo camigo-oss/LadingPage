@@ -544,6 +544,16 @@ const destinoData = {
       rangeVal.textContent = '$' + Number(rangeInput.value).toLocaleString('es-ES');
     });
   }
+
+  function goToStep(n) {
+    currentStep = n;
+    panels.forEach((p, i) => p.classList.toggle('active', i + 1 === n));
+    stepEls.forEach((s, i) => {
+      s.classList.toggle('active', i + 1 === n);
+      s.classList.toggle('done', i + 1 < n);
+    });
+  }
+
   function validateStep(n) {
     if (n === 1) {
       const dest = $('#destino-input'), fIda = $('#fecha-ida'), fVue = $('#fecha-vuelta');
@@ -558,16 +568,6 @@ const destinoData = {
     }
     return true;
   }
-
-  function goToStep(n) {
-    currentStep = n;
-    panels.forEach((p, i) => p.classList.toggle('active', i + 1 === n));
-    stepEls.forEach((s, i) => {
-      s.classList.toggle('active', i + 1 === n);
-      s.classList.toggle('done', i + 1 < n);
-    });
-  }
-
 
   $('#step1-next')?.addEventListener('click', () => { if (validateStep(1)) goToStep(2); });
   $('#step2-back')?.addEventListener('click', () => goToStep(1));

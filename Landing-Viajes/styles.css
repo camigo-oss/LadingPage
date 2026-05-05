@@ -429,7 +429,9 @@ textarea {
   width: 36px;
   padding: 4px;
   cursor: none;
+
 }
+
 
 @media (max-width: 960px) {
   .hamburger {
