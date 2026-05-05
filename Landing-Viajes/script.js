@@ -1,8 +1,5 @@
 'use strict';
 
-/* ============================================================
-   UTILIDADES
-============================================================ */
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -15,9 +12,7 @@ function showToast(msg, duration = 2800) {
   toast._tid = setTimeout(() => toast.classList.remove('show'), duration);
 }
 
-/* ============================================================
-   CURSOR PERSONALIZADO MEJORADO
-============================================================ */
+
 (function initCursor() {
   const cursor = $('#cursor');
   const follower = $('#cursor-follower');
@@ -80,9 +75,7 @@ function showToast(msg, duration = 2800) {
   });
 })();
 
-/* ============================================================
-   NAVBAR
-============================================================ */
+
 (function initNavbar() {
   const navbar = $('#navbar');
   const hamburger = $('#hamburger');
@@ -121,7 +114,7 @@ function showToast(msg, duration = 2800) {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  // Active link tracking
+  
   const sections = $$('section[id]');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -133,13 +126,7 @@ function showToast(msg, duration = 2800) {
   sections.forEach(s => obs.observe(s));
 })();
 
-/* ============================================================
-   HERO CINEMATOGRÁFICO CON SCROLL KEYFRAMES
-   
-   La imagen tiene un efecto de parallax + las palabras del
-   título se revelan conforme el usuario hace scroll hacia abajo.
-   La barra de progreso inferior muestra avance dentro del hero.
-============================================================ */
+
 (function initHeroCinematic() {
   const section = $('.hero-section');
   const imgWrap = $('#hero-img-wrap');
@@ -151,7 +138,7 @@ function showToast(msg, duration = 2800) {
 
   if (!section) return;
 
-  // ---------- Animación de palabras en entrada ----------
+
   const words = $$('.hero-word');
   words.forEach((w, i) => {
     const delay = parseInt(w.dataset.delay || 0);
@@ -160,7 +147,7 @@ function showToast(msg, duration = 2800) {
     }, 500 + delay);
   });
 
-  // ---------- Animación de contadores ----------
+
   function animateCounter(el, target, suffix = '') {
     let start = 0;
     const step = Math.ceil(target / 60);
@@ -187,15 +174,14 @@ function showToast(msg, duration = 2800) {
   }, { threshold: 0.3 });
   if (section) heroObs.observe(section);
 
-  // ---------- Scroll-driven keyframes ----------
-  // Secuencia de imágenes para el hero que van cambiando con el scroll
+
   const heroImages = [
     'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=2400&q=90',
     'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=2400&q=90',
     'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=2400&q=90',
     'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=2400&q=90',
   ];
-  // Preload
+
   heroImages.forEach(src => { const i = new Image(); i.src = src; });
 
   let lastImgIdx = 0;
@@ -217,7 +203,7 @@ function showToast(msg, duration = 2800) {
     }, 400);
   }
 
-  // Scroll handler para efectos en el hero
+
   let lastScrollY = 0;
   let rafPending = false;
 
@@ -229,37 +215,32 @@ function showToast(msg, duration = 2800) {
       const heroH = section.offsetHeight;
       const progress = Math.min(scrollY / heroH, 1); // 0 a 1
 
-      // 1. Barra de progreso
+     
       if (scrollFill) scrollFill.style.width = (progress * 100) + '%';
 
-      // 2. Parallax imagen (se mueve más lento que el scroll)
+     
       if (imgWrap) {
         const parallaxY = scrollY * 0.35;
         imgWrap.style.transform = `translateY(${parallaxY}px)`;
       }
 
-      // 3. Parallax texto de fondo
+  
       if (bgText) {
         bgText.style.transform = `translateY(${scrollY * -0.15}px)`;
       }
 
-      // 4. Tarjeta flotante
+     
       if (floatCard) {
         floatCard.style.transform = `translateY(${scrollY * 0.18}px)`;
         floatCard.style.opacity = Math.max(0, 1 - progress * 3).toString();
       }
 
-      // 5. Color overlay se intensifica
       if (colorLayer) {
         const intensity = 0 + progress * 0.4;
         colorLayer.style.opacity = (1 + intensity).toString();
       }
 
-      // 6. Cambio de imagen según keyframes de scroll
-      // Frame 0: 0-20% → imagen 0
-      // Frame 1: 20-45% → imagen 1
-      // Frame 2: 45-70% → imagen 2
-      // Frame 3: 70-100% → imagen 3
+
       const keyframes = [0, 0.20, 0.45, 0.70];
       let targetIdx = 0;
       for (let i = keyframes.length - 1; i >= 0; i--) {
@@ -267,7 +248,7 @@ function showToast(msg, duration = 2800) {
       }
       changeHeroImage(targetIdx);
 
-      // 7. Fade out contenido hero
+    
       const heroContent = $('.hero-content-inner');
       if (heroContent) {
         const opacity = Math.max(0, 1 - progress * 2.5);
@@ -284,11 +265,7 @@ function showToast(msg, duration = 2800) {
   onScroll();
 })();
 
-/* ============================================================
-   GALERÍA EN CARDS — HOVER
-   Cada card tiene múltiples imágenes que van rotando 
-   automáticamente al pasar el cursor.
-============================================================ */
+
 (function initCardGalleries() {
   const cards = $$('.destino-card');
 
@@ -297,7 +274,7 @@ function showToast(msg, duration = 2800) {
     const dotsWrap = $('.card-gallery-dots', card);
     if (!imgs.length) return;
 
-    // Crear dots
+
     imgs.forEach((_, i) => {
       const dot = document.createElement('span');
       dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
@@ -320,7 +297,7 @@ function showToast(msg, duration = 2800) {
 
       next.classList.add('card-img-active');
 
-      // Actualizar dots
+    
       const dots = getDots();
       dots.forEach((d, i) => d.classList.toggle('active', i === idx));
 
@@ -333,12 +310,12 @@ function showToast(msg, duration = 2800) {
         if (!isHovering) return;
         const next = (currentIdx + 1) % imgs.length;
         goToImg(next);
-      }, 900); // Cambio cada 900ms
+      }, 900); 
     }
 
     function stopGallery() {
       clearInterval(galleryTimer);
-      // Volver a la imagen inicial suavemente
+ 
       setTimeout(() => {
         if (!isHovering) {
           goToImg(0);
@@ -356,7 +333,7 @@ function showToast(msg, duration = 2800) {
       stopGallery();
     });
 
-    // Click en dots para ir a imagen
+  
     dotsWrap?.addEventListener('click', e => {
       const dot = e.target.closest('.gallery-dot');
       if (!dot) return;
@@ -366,9 +343,7 @@ function showToast(msg, duration = 2800) {
   });
 })();
 
-/* ============================================================
-   FILTROS DE DESTINOS
-============================================================ */
+
 (function initFiltros() {
   const btns = $$('.filtro-btn');
   const cards = $$('.destino-card');
@@ -400,9 +375,7 @@ function showToast(msg, duration = 2800) {
   });
 })();
 
-/* ============================================================
-   FAVORITOS
-============================================================ */
+
 const FAVORITES_KEY = 'viajes_estelares_fav_v2';
 function getFavorites() { try { return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || []; } catch { return []; } }
 function saveFavorites(arr) { try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(arr)); } catch {} }
@@ -477,9 +450,7 @@ const destinoData = {
   refreshFavBtns();
 })();
 
-/* ============================================================
-   TESTIMONIOS SLIDER
-============================================================ */
+
 (function initSlider() {
   const track    = $('#testimonios-track');
   const dotsWrap = $('#slider-dots');
@@ -532,7 +503,6 @@ const destinoData = {
   buildDots();
   resetAutoplay();
 
-  // Touch/swipe
   track.addEventListener('touchstart', e => {
     isDragging = true;
     startX = e.touches[0].clientX;
@@ -545,9 +515,7 @@ const destinoData = {
   });
 })();
 
-/* ============================================================
-   FORMULARIO MULTI-STEP
-============================================================ */
+
 (function initMultiStep() {
   const form     = $('#reserva-form');
   const success  = $('#form-success');
@@ -652,9 +620,7 @@ const destinoData = {
   });
 })();
 
-/* ============================================================
-   COUNTDOWN PROMOCIÓN
-============================================================ */
+
 (function initCountdown() {
   const cdDays = $('#cd-days'), cdHours = $('#cd-hours'), cdMins = $('#cd-mins');
   if (!cdDays) return;
@@ -673,9 +639,7 @@ const destinoData = {
   setInterval(tick, 30000);
 })();
 
-/* ============================================================
-   ANIMACIONES DE SCROLL (IntersectionObserver)
-============================================================ */
+
 (function initScrollAnimations() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -688,14 +652,13 @@ const destinoData = {
 
   $$('[data-animate]').forEach(el => obs.observe(el));
 
-  // Cards con stagger por índice
   const cards = $$('.destino-card');
   cards.forEach((card, i) => {
     card.style.transitionDelay = `${i * 60}ms`;
     obs.observe(card);
   });
 
-  // Otros elementos auto
+
   const autoEls = [
     ...$$('.paquete-card'),
     ...$$('.testimonio-card'),
@@ -710,71 +673,61 @@ const destinoData = {
   });
 })();
 
-/* ============================================================
-   AÑO EN FOOTER
-============================================================ */
+
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 console.log('✦ Viajes Estelares v2 — cargado');
 
-/* ============================================================
-   ANIMACIÓN GSAP ZOOM-THROUGH (ScrollTrigger)
-============================================================ */
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Asegúrate de registrar el plugin primero
+
   gsap.registerPlugin(ScrollTrigger);
 
   const zoomWrapper = document.querySelector('.zoom-wrapper');
   const zoomBgImg = document.querySelector('.zoom-background img');
   const zoomText = document.querySelector('.zoom-text');
 
-  // Creamos un Timeline para encadenar las animaciones con el scroll
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".zoom-section",
-      start: "top top", // Empieza cuando el top de la sección toca el top del viewport
-      end: "+=3000",    // Cuanto más grande sea este valor, más lento y suave será el efecto de zoom (necesitas hacer más scroll)
-      scrub: 1,         // scrub: 1 le da un ligero 'suavizado' (smoothing) de 1 segundo para que siga tu ratón de forma fluida
-      pin: true,        // Fija la pantalla, impidiendo que baje hasta que acabe la animación
+      start: "top top", 
+      end: "+=3000",   
+      scrub: 1,         
+      pin: true,        
     }
   });
 
-  // Paso 1: Hacemos desaparecer el texto de "Tu viaje empieza aquí" rápidamente
   tl.to(zoomText, {
     opacity: 0,
     y: 50,
     duration: 0.1
-  }, 0); // El "0" indica que arranca en el segundo 0 del timeline
+  }, 0); 
 
-  // Paso 2: Escalar todo el marco hasta que la ventana de avión sea más grande que el monitor.
-  // Un scale de 30 a 40 suele ser suficiente para que el "agujero" de 320px llene pantallas 4k.
   tl.to(zoomWrapper, {
     scale: 35, 
-    ease: "power2.in", // Acelera el zoom a medida que entras, dándole un efecto de gravedad o velocidad final
+    ease: "power2.in", 
     duration: 1
   }, 0);
 
-  // Paso 3 (Opcional): Animamos también la imagen de fondo para revelar sus colores al entrar
   tl.to(zoomBgImg, {
     filter: "brightness(1)",
-    scale: 1.1, // Un ligero zoom interior al paisaje para dar efecto parallax
+    scale: 1.1, 
     duration: 1
   }, 0);
 });
-// (Este es el paso 2 que ya tenías)
+
   tl.to(zoomWrapper, {
     scale: 35, 
     ease: "power2.in",
     duration: 1
   }, 0);
 
-  // NUEVO: Paso 4 - Hacer que la información aparezca AL FINAL del zoom
   const infoRevelada = document.querySelector('.info-revelada');
   if (infoRevelada) {
     tl.to(infoRevelada, {
       opacity: 1,
-      y: -20, // Pequeño efecto de subida
+      y: -20, 
       duration: 0.3
-    }, 0.8); // Empieza en el segundo 0.8 (casi cuando termina el zoom de 1 segundo)
+    }, 0.8); 
   }
