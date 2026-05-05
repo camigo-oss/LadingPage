@@ -114,7 +114,7 @@ function showToast(msg, duration = 2800) {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  
+
   const sections = $$('section[id]');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -215,21 +215,21 @@ function showToast(msg, duration = 2800) {
       const heroH = section.offsetHeight;
       const progress = Math.min(scrollY / heroH, 1); // 0 a 1
 
-     
+
       if (scrollFill) scrollFill.style.width = (progress * 100) + '%';
 
-     
+
       if (imgWrap) {
         const parallaxY = scrollY * 0.35;
         imgWrap.style.transform = `translateY(${parallaxY}px)`;
       }
 
-  
+
       if (bgText) {
         bgText.style.transform = `translateY(${scrollY * -0.15}px)`;
       }
 
-     
+
       if (floatCard) {
         floatCard.style.transform = `translateY(${scrollY * 0.18}px)`;
         floatCard.style.opacity = Math.max(0, 1 - progress * 3).toString();
@@ -248,7 +248,7 @@ function showToast(msg, duration = 2800) {
       }
       changeHeroImage(targetIdx);
 
-    
+
       const heroContent = $('.hero-content-inner');
       if (heroContent) {
         const opacity = Math.max(0, 1 - progress * 2.5);
@@ -297,7 +297,7 @@ function showToast(msg, duration = 2800) {
 
       next.classList.add('card-img-active');
 
-    
+
       const dots = getDots();
       dots.forEach((d, i) => d.classList.toggle('active', i === idx));
 
@@ -310,12 +310,12 @@ function showToast(msg, duration = 2800) {
         if (!isHovering) return;
         const next = (currentIdx + 1) % imgs.length;
         goToImg(next);
-      }, 900); 
+      }, 900);
     }
 
     function stopGallery() {
       clearInterval(galleryTimer);
- 
+
       setTimeout(() => {
         if (!isHovering) {
           goToImg(0);
@@ -333,7 +333,7 @@ function showToast(msg, duration = 2800) {
       stopGallery();
     });
 
-  
+
     dotsWrap?.addEventListener('click', e => {
       const dot = e.target.closest('.gallery-dot');
       if (!dot) return;
@@ -378,26 +378,26 @@ function showToast(msg, duration = 2800) {
 
 const FAVORITES_KEY = 'viajes_estelares_fav_v2';
 function getFavorites() { try { return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || []; } catch { return []; } }
-function saveFavorites(arr) { try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(arr)); } catch {} }
+function saveFavorites(arr) { try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(arr)); } catch { } }
 
 const destinoData = {
-  cancun:      { name: 'Cancún',          img: 'https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=120&q=60', price: '$1.299' },
-  bali:        { name: 'Bali',            img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=120&q=60', price: '$1.599' },
-  maldivas:    { name: 'Maldivas',        img: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=120&q=60', price: '$2.999' },
-  alpes:       { name: 'Alpes Suizos',    img: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=120&q=60', price: '$1.899' },
-  patagonia:   { name: 'Patagonia',       img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=120&q=60', price: '$2.499' },
-  'nueva-york':{ name: 'Nueva York',      img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=120&q=60', price: '$1.199' },
-  roma:        { name: 'Roma',            img: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=120&q=60', price: '$999'   },
-  safari:      { name: 'Safari en África',img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=120&q=60', price: '$3.299' }
+  cancun: { name: 'Cancún', img: 'https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=120&q=60', price: '$1.299' },
+  bali: { name: 'Bali', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=120&q=60', price: '$1.599' },
+  maldivas: { name: 'Maldivas', img: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=120&q=60', price: '$2.999' },
+  alpes: { name: 'Alpes Suizos', img: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=120&q=60', price: '$1.899' },
+  patagonia: { name: 'Patagonia', img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=120&q=60', price: '$2.499' },
+  'nueva-york': { name: 'Nueva York', img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=120&q=60', price: '$1.199' },
+  roma: { name: 'Roma', img: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=120&q=60', price: '$999' },
+  safari: { name: 'Safari en África', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=120&q=60', price: '$3.299' }
 };
 
 (function initFavorites() {
-  const panel     = $('#favoritos-panel');
+  const panel = $('#favoritos-panel');
   const panelBody = $('#fav-panel-body');
   const navFavBtn = $('#nav-favorites');
-  const favCount  = $('#favorites-count');
-  const closeBtn  = $('#fav-panel-close');
-  const favBtns   = $$('.card-fav');
+  const favCount = $('#favorites-count');
+  const closeBtn = $('#fav-panel-close');
+  const favBtns = $$('.card-fav');
 
   function refreshFavBtns() {
     const favs = getFavorites();
@@ -452,10 +452,10 @@ const destinoData = {
 
 
 (function initSlider() {
-  const track    = $('#testimonios-track');
+  const track = $('#testimonios-track');
   const dotsWrap = $('#slider-dots');
-  const prevBtn  = $('#slider-prev');
-  const nextBtn  = $('#slider-next');
+  const prevBtn = $('#slider-prev');
+  const nextBtn = $('#slider-next');
   if (!track) return;
 
   const cards = $$('.testimonio-card', track);
@@ -517,13 +517,13 @@ const destinoData = {
 
 
 (function initMultiStep() {
-  const form     = $('#reserva-form');
-  const success  = $('#form-success');
+  const form = $('#reserva-form');
+  const success = $('#form-success');
   const resetBtn = $('#form-reset');
   if (!form) return;
 
   const stepEls = $$('.form-step');
-  const panels  = $$('.form-panel');
+  const panels = $$('.form-panel');
   let currentStep = 1;
   const counters = { adultos: 2, ninos: 0 };
 
@@ -538,22 +538,12 @@ const destinoData = {
   });
 
   const rangeInput = $('#presupuesto-range');
-  const rangeVal   = $('#range-val');
+  const rangeVal = $('#range-val');
   if (rangeInput && rangeVal) {
     rangeInput.addEventListener('input', () => {
       rangeVal.textContent = '$' + Number(rangeInput.value).toLocaleString('es-ES');
     });
   }
-
-  function goToStep(n) {
-    currentStep = n;
-    panels.forEach((p, i) => p.classList.toggle('active', i + 1 === n));
-    stepEls.forEach((s, i) => {
-      s.classList.toggle('active', i + 1 === n);
-      s.classList.toggle('done', i + 1 < n);
-    });
-  }
-
   function validateStep(n) {
     if (n === 1) {
       const dest = $('#destino-input'), fIda = $('#fecha-ida'), fVue = $('#fecha-vuelta');
@@ -568,6 +558,16 @@ const destinoData = {
     }
     return true;
   }
+
+  function goToStep(n) {
+    currentStep = n;
+    panels.forEach((p, i) => p.classList.toggle('active', i + 1 === n));
+    stepEls.forEach((s, i) => {
+      s.classList.toggle('active', i + 1 === n);
+      s.classList.toggle('done', i + 1 < n);
+    });
+  }
+
 
   $('#step1-next')?.addEventListener('click', () => { if (validateStep(1)) goToStep(2); });
   $('#step2-back')?.addEventListener('click', () => goToStep(1));
@@ -596,7 +596,7 @@ const destinoData = {
     goToStep(1);
     counters.adultos = 2; counters.ninos = 0;
     $('#val-adultos').textContent = '2';
-    $('#val-ninos').textContent   = '0';
+    $('#val-ninos').textContent = '0';
     if (rangeVal) rangeVal.textContent = '$1.500';
     const submitBtn = form.querySelector('.btn-submit');
     if (submitBtn) { submitBtn.textContent = 'Enviar solicitud ✦'; submitBtn.disabled = false; }
@@ -631,9 +631,9 @@ const destinoData = {
   function tick() {
     const diff = target - new Date();
     if (diff <= 0) { cdDays.textContent = cdHours.textContent = cdMins.textContent = '00'; return; }
-    cdDays.textContent  = pad(Math.floor(diff / 86400000));
+    cdDays.textContent = pad(Math.floor(diff / 86400000));
     cdHours.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    cdMins.textContent  = pad(Math.floor((diff % 3600000) / 60000));
+    cdMins.textContent = pad(Math.floor((diff % 3600000) / 60000));
   }
   tick();
   setInterval(tick, 30000);
@@ -691,10 +691,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".zoom-section",
-      start: "top top", 
-      end: "+=3000",   
-      scrub: 1,         
-      pin: true,        
+      start: "top top",
+      end: "+=3000",
+      scrub: 1,
+      pin: true,
     }
   });
 
@@ -702,32 +702,32 @@ document.addEventListener("DOMContentLoaded", () => {
     opacity: 0,
     y: 50,
     duration: 0.1
-  }, 0); 
+  }, 0);
 
   tl.to(zoomWrapper, {
-    scale: 35, 
-    ease: "power2.in", 
+    scale: 35,
+    ease: "power2.in",
     duration: 1
   }, 0);
 
   tl.to(zoomBgImg, {
     filter: "brightness(1)",
-    scale: 1.1, 
+    scale: 1.1,
     duration: 1
   }, 0);
 });
 
-  tl.to(zoomWrapper, {
-    scale: 35, 
-    ease: "power2.in",
-    duration: 1
-  }, 0);
+tl.to(zoomWrapper, {
+  scale: 35,
+  ease: "power2.in",
+  duration: 1
+}, 0);
 
-  const infoRevelada = document.querySelector('.info-revelada');
-  if (infoRevelada) {
-    tl.to(infoRevelada, {
-      opacity: 1,
-      y: -20, 
-      duration: 0.3
-    }, 0.8); 
-  }
+const infoRevelada = document.querySelector('.info-revelada');
+if (infoRevelada) {
+  tl.to(infoRevelada, {
+    opacity: 1,
+    y: -20,
+    duration: 0.3
+  }, 0.8);
+}
